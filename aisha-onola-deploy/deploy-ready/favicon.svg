@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <g transform="rotate(-6 32 32)">
+    <circle cx="32" cy="32" r="30" fill="#3A0E1F"/>
+    <circle cx="32" cy="32" r="24" fill="none" stroke="#D8A63E" stroke-width="4"/>
+    <text x="32" y="44" text-anchor="middle"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-weight="700" font-size="32" fill="#F6EFE4">A</text>
+  </g>
+</svg>
