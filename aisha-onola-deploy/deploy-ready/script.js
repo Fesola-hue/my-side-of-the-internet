@@ -1,13 +1,9 @@
-/*
- * Writing URLs are intentionally placeholders until Aisha's writing site ships.
- * Replace WRITING_SITE_HOME and the four route values together once confirmed.
- */
-const WRITING_SITE_HOME = null;
+const WRITING_SITE_HOME = "https://read.aishaonola.me/";
 const WRITING_ROUTES = {
-  "world-bigger": null,
-  "dating-myself": null,
-  "ai-ownership": null,
-  "own-anything": null
+  "world-bigger": "/writing/people-who-made-my-world/",
+  "dating-myself": "/writing/so-i-started-dating-myself/",
+  "ai-ownership": "/writing/offscript-004-nigeria-doesn-t-have-an-ai-problem-it-has-an-ownership-problem/",
+  "own-anything": "/offscript/"
 };
 
 function initNavigation() {
@@ -33,6 +29,7 @@ function initNavigation() {
 function initWritingShelf() {
   const books = [...document.querySelectorAll(".book")];
   const titleBox = document.querySelector(".book-titles");
+  const touchDevice = window.matchMedia("(hover: none), (pointer: coarse)").matches;
 
   function showTitle(book) {
     const id = book.getAttribute("aria-describedby");
@@ -49,6 +46,17 @@ function initWritingShelf() {
       book.href = new URL(route, WRITING_SITE_HOME).href;
       book.target = "_blank";
       book.rel = "noopener";
+      if (touchDevice) {
+        book.addEventListener("click", (event) => {
+          if (book.dataset.titleShown !== "true") {
+            event.preventDefault();
+            book.dataset.titleShown = "true";
+            showTitle(book);
+          } else {
+            delete book.dataset.titleShown;
+          }
+        });
+      }
     } else {
       book.dataset.pendingUrl = "true";
       book.setAttribute("aria-label", `${document.getElementById(book.getAttribute("aria-describedby"))?.textContent}. Writing URL pending.`);
