@@ -1,11 +1,30 @@
+import { useEffect, useRef } from "react";
 import { heroTicker } from "../data/content";
 import { MarqueeText } from "./MarqueeText";
 
 type HeroProps = { onOpenContact: (trigger: HTMLButtonElement) => void };
 
 export function Hero({ onOpenContact }: HeroProps) {
+  const heroRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const updateScrollProgress = () => {
+      const distance = Math.max(hero.offsetHeight * .7, 1);
+      const progress = Math.min(Math.max(window.scrollY / distance, 0), 1);
+      hero.style.setProperty("--hero-scroll", progress.toFixed(3));
+    };
+
+    updateScrollProgress();
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    return () => window.removeEventListener("scroll", updateScrollProgress);
+  }, []);
+
   return (
     <header
+      ref={heroRef}
       className="hero"
       id="top"
       onPointerMove={(event) => {
