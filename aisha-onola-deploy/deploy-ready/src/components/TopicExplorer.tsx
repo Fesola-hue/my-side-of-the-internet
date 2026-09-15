@@ -23,7 +23,7 @@ export function TopicExplorer() {
         <span className="topic-detail-no">Theme {String(selectedIndex + 1).padStart(2, "0")}</span>
         <h3>{selected.title}</h3>
         <p>{selected.description}</p>
-        <span className="topic-scribble handwritten" aria-hidden="true">let’s unpack it →</span>
+        <span className="topic-scribble handwritten" aria-hidden="true">let’s unpack it!</span>
       </div>
     </div>
   );
