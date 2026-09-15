@@ -66,7 +66,7 @@ export function Home({ pageRef, onOpenContact }: HomeProps) {
                 <div className="issue issue-mid"><span>One stat worth knowing</span><b>THE PAPER TRAIL</b></div>
                 <div className="issue issue-front"><span>Inside every issue</span><b>POWER<br />MONEY<br />TECH</b><em>Culture, too.<br />Explained.</em></div>
               </div>
-              <p className="offscript-prompt handwritten">what's in every issue →</p>
+              <p className="offscript-prompt handwritten">what's in every issue ↓</p>
               <OffscriptExplorer />
             </div>
           </div>
