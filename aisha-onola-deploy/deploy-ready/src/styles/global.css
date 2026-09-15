@@ -71,8 +71,12 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--blue); outline-
 .hero h1 .onola-word { display: inline; color: var(--cream); -webkit-text-stroke: 0; }
 .hero h1 em { display: inline-block; margin-left: .35rem; color: var(--gold); font-family: "Caveat", cursive; font-size: clamp(1.7rem, 3vw, 3rem); letter-spacing: 0; text-transform: none; transform: rotate(-3deg); }
 .hero-copy > p { max-width: 34rem; margin: 1.25rem 0 0; font-family: "Instrument Serif", serif; font-size: clamp(1.4rem, 2.4vw, 2.2rem); font-style: italic; line-height: 1.18; }
-.hero-contact-trigger { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1rem; border: 0; border-bottom: 2px solid var(--gold); border-radius: 0; padding: .3rem 0 .22rem; background: transparent; color: var(--cream); font-family: "JetBrains Mono", monospace; font-size: .78rem; font-weight: 700; letter-spacing: .025em; cursor: pointer; transition: color .2s ease, border-color .2s ease, transform .2s ease; }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; margin-top: 1rem; }
+.hero-explore-trigger, .hero-contact-trigger { display: inline-flex; align-items: center; gap: .5rem; border: 0; border-bottom: 2px solid var(--gold); border-radius: 0; padding: .3rem 0 .22rem; background: transparent; color: var(--cream); font-family: "JetBrains Mono", monospace; font-size: .78rem; font-weight: 700; letter-spacing: .025em; text-decoration: none; cursor: pointer; transition: color .2s ease, border-color .2s ease, transform .2s ease; }
+.hero-contact-trigger { margin-top: 0; }
+.hero-explore-trigger { color: var(--gold); }
 .hero-contact-trigger:hover, .hero-contact-trigger:focus-visible { border-bottom-color: var(--cream); color: var(--gold); transform: translateX(.2rem); }
+.hero-explore-trigger:hover, .hero-explore-trigger:focus-visible { border-bottom-color: var(--cream); color: var(--cream); transform: translateX(.2rem); }
 .contact-trigger { gap: .55rem; cursor: pointer; }
 .scroll-cue { position: absolute; right: var(--pad); bottom: 3.9rem; display: flex; flex-direction: column; align-items: center; gap: .35rem; font-family: "JetBrains Mono", monospace; font-size: .62rem; letter-spacing: .13em; text-decoration: none; text-transform: uppercase; }
 .ticker { position: absolute; bottom: 0; left: 0; right: 0; overflow: hidden; border-top: 1px solid rgba(27,18,16,.7); padding: .28rem 0; background: var(--gold); color: var(--wine-deep); }
@@ -369,9 +373,9 @@ main:focus { outline: none; }
   .hero { height: 100svh; min-height: 0; padding-top: 5.5rem; padding-bottom: 3.6rem; }
   .hero-location { top: clamp(4.5rem, 8vh, 5.5rem); }
   .hero-copy { padding-bottom: .5rem; }
-  .hero h1 { font-size: clamp(4rem, 10.4vw, 8.8rem); }
-  .hero-copy > p { margin-top: .8rem; font-size: clamp(1.35rem, 2vw, 1.9rem); }
-  .hero-contact-trigger { margin-top: .8rem; }
+  .hero h1 { font-size: clamp(4rem, 8vw, 7rem); }
+  .hero-copy > p { margin-top: .8rem; font-size: clamp(1.25rem, 1.7vw, 1.65rem); }
+  .hero-actions { margin-top: .8rem; }
   .scroll-cue { bottom: 2.65rem; }
   .writing .bookshelf { height: clamp(13rem, 17vw, 15rem); padding-bottom: 1rem; }
   .writing .book { width: clamp(3.4rem, 6.5vw, 5.8rem); }
@@ -420,7 +424,7 @@ main:focus { outline: none; }
   .hero h1 { font-size: clamp(4rem, 21vw, 6rem); }
   .hero h1 em { display: block; width: max-content; margin: -.35rem 0 0 auto; font-size: 1.75rem; }
   .hero-copy > p { width: 100%; max-width: 22rem; margin-top: .75rem; padding-right: .4rem; font-size: 1.28rem; }
-  .hero-contact-trigger { margin-top: 1rem; }
+  .hero-actions { align-items: flex-start; flex-direction: column; gap: .55rem; margin-top: 1rem; }
   .scroll-cue { right: auto; bottom: 3.25rem; left: 50%; transform: translateX(-50%); }
   .about-copy .lede { font-size: 1.4rem; }
   .writing { padding-inline: .8rem; }
