@@ -1,9 +1,11 @@
 import { RefObject } from "react";
+import { Link } from "react-router-dom";
 import { Hero } from "../components/Hero";
 import { SiteNav } from "../components/SiteNav";
 import { WritingShelf } from "../components/WritingShelf";
 import { MarqueeText } from "../components/MarqueeText";
 import { experience, projects, skillsTicker, socialLinks } from "../data/content";
+import { useRevealAnimations } from "../hooks/useRevealAnimations";
 
 type HomeProps = {
   pageRef: RefObject<HTMLDivElement | null>;
@@ -11,8 +13,9 @@ type HomeProps = {
 };
 
 export function Home({ pageRef, onOpenContact }: HomeProps) {
+  useRevealAnimations();
   return (
-    <div ref={pageRef}>
+    <div ref={pageRef} className="route-view">
       <a className="skip-link" href="#main">Skip to content</a>
       <div className="grain" aria-hidden="true" />
       <SiteNav />
@@ -27,6 +30,7 @@ export function Home({ pageRef, onOpenContact }: HomeProps) {
               <p className="lede">I'm a founder, writer and product-minded operator interested in how information becomes clearer, more useful and more human.</p>
               <p>By day, I work as a Founder's Associate across operations and executive priorities. Outside of work, I founded <a href="https://theoffscript.page" target="_blank" rel="noopener">The OffScript</a>, write about the ideas I can't leave alone, and make small internet products when I want something to exist.</p>
               <blockquote>"Make it easier to understand, use, or keep."</blockquote>
+              <Link className="text-link home-speaking-link" to="/speaking">See where I’m speaking →</Link>
             </div>
             <figure className="portrait-note">
               <span className="tape tape-left" aria-hidden="true" /><span className="tape tape-right" aria-hidden="true" />

@@ -5,11 +5,12 @@ type ContactRoomProps = {
   onClose: () => void;
   pageRef: RefObject<HTMLDivElement | null>;
   returnFocusRef: RefObject<HTMLButtonElement | null>;
+  defaultReason?: string;
 };
 
 const focusableSelector = "a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])";
 
-export function ContactRoom({ isOpen, onClose, pageRef, returnFocusRef }: ContactRoomProps) {
+export function ContactRoom({ isOpen, onClose, pageRef, returnFocusRef, defaultReason }: ContactRoomProps) {
   const roomRef = useRef<HTMLElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
@@ -152,7 +153,7 @@ export function ContactRoom({ isOpen, onClose, pageRef, returnFocusRef }: Contac
               <form className={`contact-form${validated ? " was-validated" : ""}`} action="https://formspree.io/f/mzeblevj" method="POST" noValidate aria-busy={submitting || undefined} onSubmit={submit}>
                 <div className="form-field"><label htmlFor="contact-name">Name <span aria-hidden="true">*</span></label><input id="contact-name" name="name" type="text" autoComplete="name" required /></div>
                 <div className="form-field"><label htmlFor="contact-email">Email <span aria-hidden="true">*</span></label><input id="contact-email" name="email" type="email" inputMode="email" autoComplete="email" required /></div>
-                <div className="form-field"><label htmlFor="contact-reason">What are you reaching out about? <span aria-hidden="true">*</span></label><div className="select-wrap"><select id="contact-reason" name="reason" required defaultValue=""><option value="" disabled>Select one</option><option>Job opportunity</option><option>Freelance / project</option><option>Collaboration</option><option>Speaking / media</option><option>Something else</option></select></div></div>
+                <div className="form-field"><label htmlFor="contact-reason">What are you reaching out about? <span aria-hidden="true">*</span></label><div className="select-wrap"><select id="contact-reason" name="reason" required defaultValue={defaultReason ?? ""}><option value="" disabled>Select one</option><option>Job opportunity</option><option>Freelance / project</option><option>Collaboration</option><option>Speaking / media</option><option>Something else</option></select></div></div>
                 <div className="form-field"><label htmlFor="contact-message">Tell me a little more <span aria-hidden="true">*</span></label><textarea id="contact-message" name="message" rows={4} required /></div>
                 <p className="form-error" role="alert" aria-live="assertive" tabIndex={-1} hidden={!error}>{error}</p>
                 <button className="button button-gold contact-submit" type="submit" disabled={submitting}>{submitting ? "Sending…" : "Send it ↗"}</button>

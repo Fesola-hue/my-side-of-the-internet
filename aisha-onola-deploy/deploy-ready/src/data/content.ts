@@ -22,6 +22,7 @@ export const navItems = [
   ["OffScript", "#offscript"],
   ["Built", "#built"],
   ["Work", "#work"],
+  ["Speaking", "/speaking"],
 ] as const;
 
 export const writingPieces: WritingPiece[] = [
