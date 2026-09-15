@@ -566,7 +566,8 @@ main:focus { outline: none; }
 .offscript-intro { display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
 .offscript-prompt { display: none; margin: 0 0 .5rem; color: var(--gold); font-size: 1.35rem; transform: rotate(-3deg); }
 .offscript-explorer { display: grid; grid-template-columns: minmax(12rem,.7fr) minmax(0,1.3fr); min-height: 23rem; border: 1px solid rgba(246,239,228,.38); }
-.offscript-layout > .offscript-explorer { display: none; }
+.offscript-layout > .issue-stack { display: none; }
+.offscript-layout > .offscript-explorer { display: grid; }
 .offscript-index { border-right: 1px solid rgba(246,239,228,.38); }
 .offscript-index button { display: grid; grid-template-columns: 2rem 1fr auto; gap: .6rem; width: 100%; min-height: 3.5rem; align-items: center; border: 0; border-bottom: 1px dashed rgba(246,239,228,.24); padding: .55rem .8rem; background: transparent; color: var(--cream); text-align: left; cursor: pointer; transition: padding .2s ease,background .2s ease,color .2s ease; }
 .offscript-index button:last-child { border-bottom: 0; }
