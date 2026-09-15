@@ -100,7 +100,7 @@ export function Home({ pageRef, onOpenContact }: HomeProps) {
               <p>I work close to founders, make sense of messy work, and build the systems that help good ideas keep moving. The short version is here; the full detail lives in my CV.</p>
             </div>
             <ol className="credits">
-              {experience.map((item) => <li key={item.role}><time dateTime={item.dateTime}>{item.date}</time><div><h3>{item.role}</h3><p className="org">{item.org}</p><p>{item.detail}</p><ul>{item.points.map((point) => <li key={point}>{point}</li>)}</ul></div></li>)}
+              {experience.map((item) => <li key={item.role}><time dateTime={item.dateTime}>{item.date}</time><div><h3>{item.role}</h3><p className="org">{item.org}</p><p>{item.detail}</p></div></li>)}
             </ol>
             <div className="button-row work-buttons">
               <a className="button button-gold" href="/Aisha-Onola-CV.pdf" target="_blank" rel="noopener">View my CV ↗</a>

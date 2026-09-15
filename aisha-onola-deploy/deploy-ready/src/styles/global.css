@@ -197,8 +197,6 @@ blockquote { margin: 2rem 0 0; border-left: 3px solid var(--gold); padding: .2re
 .credits h3 { margin: 0 0 .35rem; color: var(--cream); font-size: 1.35rem; }
 .credits .org { margin: 0 0 .6rem; color: var(--blue); font-family: "JetBrains Mono", monospace; font-size: .68rem; text-transform: uppercase; }
 .credits div > p:last-child { max-width: 40rem; margin-bottom: 0; color: var(--cream-dim); font-size: .93rem; line-height: 1.55; }
-.credits ul { display: grid; gap: .45rem; max-width: 46rem; margin: .9rem 0 0; padding-left: 1.1rem; color: var(--cream-dim); font-size: .9rem; line-height: 1.5; }
-.credits li li { display: list-item; padding: 0; border-top: 0; }
 .work-buttons { margin-top: 2.5rem; }
 .work-contact { display: flex; align-items: center; justify-content: flex-end; gap: 1.2rem; margin-top: 2.75rem; border-top: 1px dashed rgba(246,239,228,.3); padding-top: 1.6rem; }
 .work-contact .handwritten { color: var(--blue); font-size: 1.35rem; transform: rotate(-3deg); }

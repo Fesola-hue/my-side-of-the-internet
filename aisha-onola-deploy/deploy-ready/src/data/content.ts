@@ -123,36 +123,21 @@ export const experience = [
     dateTime: "2025-11",
     role: "Founder's Associate",
     org: "HRA Systems · Remote",
-    detail: "I work close to the founder on the loose threads that keep a fast-moving company moving.",
-    points: [
-      "Run market, competitor, vendor and opportunity research, then turn findings into briefing notes, trackers and recommendations.",
-      "Own workflows for special initiatives, tracking timelines, dependencies, deliverables and action items when there is no standing playbook.",
-      "Built operational documentation and internal knowledge systems in Notion and Trello, while supporting recruitment, candidate coordination and onboarding.",
-      "Manage calendar coordination, stakeholder follow-ups and working documents across concurrent executive priorities.",
-    ],
+    detail: "I work close to the founder across research, operations and new initiatives. I turn market, competitor and opportunity research into useful briefs and recommendations, take on projects that don’t come with a playbook, and build the docs and systems that keep the work organised. I’ve also supported hiring, from candidate coordination through onboarding.",
   },
   {
     date: "Jul '25 to present",
     dateTime: "2025-07",
     role: "The OffScript",
     org: "Founder & Editor · Remote",
-    detail: "I founded and run a digital media publication for Nigerians, from the first story to the operating system behind it.",
-    points: [
-      "Reached 100+ subscribers in the first five weeks through direct outreach and partnerships.",
-      "Own research, writing, editing, publishing, email distribution, website management and audience analytics.",
-      "Built a self-serve content archive and portfolio, and use campaign data to guide distribution and channel decisions.",
-    ],
+    detail: "I founded and run a digital media publication for young Nigerians, handling everything from research and writing to publishing, the website and GTM. It grew to 100+ subscribers in its first few weeks through direct outreach and partnerships, and I use audience and campaign data to figure out what’s working, where to reach people and what to try next.",
   },
   {
     date: "Jul '25 to Oct '25",
     dateTime: "2025-07",
     role: "Proten International",
     org: "Outsourcing Intern · Hybrid",
-    detail: "Worked on the people and processes behind outsourced staffing.",
-    points: [
-      "Supported recruitment, onboarding, employee communication and workforce administration for outsourced staff using Zoho and Seamless HR.",
-      "Served as the day-to-day point of contact for outsourced employees, resolving operational issues and keeping onboarding on track.",
-    ],
+    detail: "I worked on the people and processes behind outsourced staffing, supporting recruitment, onboarding and workforce admin across Zoho and SeamlessHR. I was also a day-to-day contact for outsourced employees, helping sort operational issues and keep onboarding on track.",
   },
 ];
 
