@@ -43,18 +43,18 @@ export const writingPieces: WritingPiece[] = [
     className: "book-personal book-one",
   },
   {
-    key: "dating-myself",
-    shortTitle: "Dating myself",
-    fullTitle: "So, I started dating myself",
-    href: "https://read.aishaonola.me/writing/so-i-started-dating-myself/",
-    className: "book-personal book-two",
-  },
-  {
     key: "ai-ownership",
     shortTitle: "AI & ownership",
     fullTitle: "Nigeria Doesn't Have an AI Problem. It Has an Ownership Problem.",
     href: "https://read.aishaonola.me/writing/offscript-004-nigeria-doesn-t-have-an-ai-problem-it-has-an-ownership-problem/",
     className: "book-offscript book-three",
+  },
+  {
+    key: "dating-myself",
+    shortTitle: "Dating myself",
+    fullTitle: "So, I started dating myself",
+    href: "https://read.aishaonola.me/writing/so-i-started-dating-myself/",
+    className: "book-personal book-two",
   },
   {
     key: "own-anything",
