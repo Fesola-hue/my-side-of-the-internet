@@ -75,8 +75,10 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--blue); outline-
 .hero-explore-trigger, .hero-contact-trigger { display: inline-flex; align-items: center; gap: .5rem; border: 0; border-bottom: 2px solid var(--gold); border-radius: 0; padding: .3rem 0 .22rem; background: transparent; color: var(--cream); font-family: "JetBrains Mono", monospace; font-size: .78rem; font-weight: 700; letter-spacing: .025em; text-decoration: none; cursor: pointer; transition: color .2s ease, border-color .2s ease, transform .2s ease; }
 .hero-contact-trigger { margin-top: 0; }
 .hero-explore-trigger { color: var(--gold); }
+.hero-contact-trigger { border-bottom-color: transparent; color: var(--cream-dim); }
 .hero-contact-trigger:hover, .hero-contact-trigger:focus-visible { border-bottom-color: var(--cream); color: var(--gold); transform: translateX(.2rem); }
 .hero-explore-trigger:hover, .hero-explore-trigger:focus-visible { border-bottom-color: var(--cream); color: var(--cream); transform: translateX(.2rem); }
+.hero-contact-trigger:hover, .hero-contact-trigger:focus-visible { border-bottom-color: transparent; }
 .contact-trigger { gap: .55rem; cursor: pointer; }
 .scroll-cue { position: absolute; right: var(--pad); bottom: 3.9rem; display: flex; flex-direction: column; align-items: center; gap: .35rem; font-family: "JetBrains Mono", monospace; font-size: .62rem; letter-spacing: .13em; text-decoration: none; text-transform: uppercase; }
 .ticker { position: absolute; bottom: 0; left: 0; right: 0; overflow: hidden; border-top: 1px solid rgba(27,18,16,.7); padding: .28rem 0; background: var(--gold); color: var(--wine-deep); }
