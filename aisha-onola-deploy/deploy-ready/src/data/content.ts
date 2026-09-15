@@ -1,0 +1,109 @@
+export type WritingPiece = {
+  key: string;
+  shortTitle: string;
+  fullTitle: string;
+  href: string;
+  className: string;
+};
+
+export type Project = {
+  name: string;
+  description: string;
+  roles: string;
+  href?: string;
+  linkLabel?: string;
+  image?: { src: string; width: number; height: number; alt: string };
+  mediaClass: string;
+};
+
+export const navItems = [
+  ["About", "#about"],
+  ["Writing", "#writing"],
+  ["OffScript", "#offscript"],
+  ["Built", "#built"],
+  ["Work", "#work"],
+] as const;
+
+export const writingPieces: WritingPiece[] = [
+  {
+    key: "world-bigger",
+    shortTitle: "My world, a little bigger",
+    fullTitle: "People who made my world a little bigger❤️",
+    href: "https://read.aishaonola.me/writing/people-who-made-my-world/",
+    className: "book-personal book-one",
+  },
+  {
+    key: "dating-myself",
+    shortTitle: "Dating myself",
+    fullTitle: "So, I started dating myself",
+    href: "https://read.aishaonola.me/writing/so-i-started-dating-myself/",
+    className: "book-personal book-two",
+  },
+  {
+    key: "ai-ownership",
+    shortTitle: "AI & ownership",
+    fullTitle: "Nigeria Doesn't Have an AI Problem. It Has an Ownership Problem.",
+    href: "https://read.aishaonola.me/writing/offscript-004-nigeria-doesn-t-have-an-ai-problem-it-has-an-ownership-problem/",
+    className: "book-offscript book-three",
+  },
+  {
+    key: "own-anything",
+    shortTitle: "Who gets to own?",
+    fullTitle: "Three companies are quietly deciding if our generation ever owns anything.",
+    href: "https://read.aishaonola.me/offscript/",
+    className: "book-offscript book-four",
+  },
+];
+
+export const projects: Project[] = [
+  {
+    name: "STILLcam",
+    description: "Turn a few photos into little memory objects.",
+    roles: "Concept · Product · Design · Build",
+    href: "https://stillcam.vercel.app",
+    linkLabel: "Make a memory ↗",
+    image: { src: "/assets/screenshots/stillcam-desktop.png", width: 1440, height: 1100, alt: "Full desktop viewport of STILLcam" },
+    mediaClass: "project-media-landscape",
+  },
+  {
+    name: "The OffScript Check",
+    description: "A two-minute interactive check of what you actually know about the news.",
+    roles: "Concept · Editorial · Product · Build",
+    href: "https://check.theoffscript.page",
+    linkLabel: "Take the Check ↗",
+    image: { src: "/assets/screenshots/check-desktop.png", width: 1440, height: 900, alt: "Full viewport of The OffScript Check landing screen" },
+    mediaClass: "project-media-tall",
+  },
+  {
+    name: "Aisha's Writing Space",
+    description: "A home for the things I write, from personal essays to reported stories.",
+    roles: "Creative direction · Editorial · Design · Build",
+    href: "https://read.aishaonola.me/",
+    linkLabel: "Enter ↗",
+    image: { src: "/assets/screenshots/writing-desktop.png", width: 1440, height: 900, alt: "Full desktop viewport of Aisha's writing space" },
+    mediaClass: "project-media-landscape",
+  },
+  {
+    name: "aishaonola.me",
+    description: "My little corner of the internet. You're already here.",
+    roles: "Design · Build",
+    mediaClass: "project-media-wide",
+  },
+];
+
+export const experience = [
+  { date: "Nov '25 — now", dateTime: "2025-11", role: "Founder's Associate", org: "HRA Systems · Remote", detail: "Supporting the founder across executive priorities and day-to-day operations, coordinating cross-functional projects, and building the company's internal knowledge base." },
+  { date: "Jul '25", dateTime: "2025-07", role: "Outsourcing Intern", org: "Proten International · Hybrid", detail: "Supported recruitment, onboarding and workforce administration across teams." },
+  { date: "May '24", dateTime: "2024-05", role: "Class Teacher", org: "Bosom Private School · On-site", detail: "Planned lessons, tracked progress and kept students, parents and school management moving together." },
+];
+
+export const socialLinks = [
+  { name: "LinkedIn", note: "work & thoughts", href: "https://www.linkedin.com/in/aishaonola" },
+  { name: "Instagram", note: "life & moments", href: "https://instagram.com/aishaa_fesola" },
+  { name: "X", note: "ideas & opinions", href: "https://x.com/aishaonola" },
+  { name: "GitHub", note: "code & experiments", href: "https://github.com/Fesola-hue" },
+  { name: "Email", note: "contact@aishaonola.me", href: "mailto:contact@aishaonola.me" },
+];
+
+export const heroTicker = ["Founder", "Writer", "Media builder", "Product-minded operator"];
+export const skillsTicker = ["Founder's Associate", "Business Operations", "Project Coordination", "Research", "Stakeholder Communication", "Executive Support", "Workflow Management", "Writing", "Editorial", "Product Thinking"];
