@@ -118,9 +118,42 @@ export const personalStatus: PersonalStatus[] = [
 ];
 
 export const experience = [
-  { date: "Nov '25 — now", dateTime: "2025-11", role: "Founder's Associate", org: "HRA Systems · Remote", detail: "Supporting the founder across executive priorities and day-to-day operations, coordinating cross-functional projects, and building the company's internal knowledge base." },
-  { date: "Jul '25", dateTime: "2025-07", role: "Outsourcing Intern", org: "Proten International · Hybrid", detail: "Supported recruitment, onboarding and workforce administration across teams." },
-  { date: "May '24", dateTime: "2024-05", role: "Class Teacher", org: "Bosom Private School · On-site", detail: "Planned lessons, tracked progress and kept students, parents and school management moving together." },
+  {
+    date: "Nov '25 to present",
+    dateTime: "2025-11",
+    role: "Founder's Associate",
+    org: "HRA Systems · Remote",
+    detail: "I work close to the founder on the loose threads that keep a fast-moving company moving.",
+    points: [
+      "Run market, competitor, vendor and opportunity research, then turn findings into briefing notes, trackers and recommendations.",
+      "Own workflows for special initiatives, tracking timelines, dependencies, deliverables and action items when there is no standing playbook.",
+      "Built operational documentation and internal knowledge systems in Notion and Trello, while supporting recruitment, candidate coordination and onboarding.",
+      "Manage calendar coordination, stakeholder follow-ups and working documents across concurrent executive priorities.",
+    ],
+  },
+  {
+    date: "Jul '25 to present",
+    dateTime: "2025-07",
+    role: "The OffScript",
+    org: "Founder & Editor · Remote",
+    detail: "I founded and run a digital media publication for Nigerians, from the first story to the operating system behind it.",
+    points: [
+      "Reached 100+ subscribers in the first five weeks through direct outreach and partnerships.",
+      "Own research, writing, editing, publishing, email distribution, website management and audience analytics.",
+      "Built a self-serve content archive and portfolio, and use campaign data to guide distribution and channel decisions.",
+    ],
+  },
+  {
+    date: "Jul '25 to Oct '25",
+    dateTime: "2025-07",
+    role: "Proten International",
+    org: "Outsourcing Intern · Hybrid",
+    detail: "Worked on the people and processes behind outsourced staffing.",
+    points: [
+      "Supported recruitment, onboarding, employee communication and workforce administration for outsourced staff using Zoho and Seamless HR.",
+      "Served as the day-to-day point of contact for outsourced employees, resolving operational issues and keeping onboarding on track.",
+    ],
+  },
 ];
 
 export const socialLinks = [
