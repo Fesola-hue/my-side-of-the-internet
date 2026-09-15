@@ -493,9 +493,10 @@ main:focus { outline: none; }
   .topic-index button { min-height: 3.45rem; padding: .65rem .35rem; }
   .topic-index button b { font-size: .82rem; }
   .topic-detail { display: none; }
-  .topic-inline-detail { display: none; padding: 0 .35rem 1rem 3.3rem; }
+  .topic-inline-detail { display: none; padding: .45rem .35rem 1.45rem 3.3rem; }
   .topic-row.is-active .topic-inline-detail { display: block; }
-  .topic-inline-detail p { max-width: 31rem; margin: -.1rem 0 0; color: var(--cream-dim); font-family: "Instrument Serif", serif; font-size: 1.15rem; line-height: 1.35; }
+  .topic-inline-detail p { max-width: 31rem; margin: 0; color: var(--cream-dim); font-family: "Instrument Serif", serif; font-size: 1.15rem; line-height: 1.45; }
+  .topic-inline-scribble { display: block; margin: .9rem .4rem 0 auto; color: var(--gold); font-size: 1.2rem; text-align: right; transform: rotate(-3deg); }
   .speaking-invitation p:not(.eyebrow) { font-size: 1.2rem; }
 }
 
