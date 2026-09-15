@@ -12,7 +12,7 @@ export function TopicExplorer() {
         {speakingTopics.map((topic, index) => {
           const active = topic.id === selectedId;
           return <div key={topic.id} className={`topic-row${active ? " is-active" : ""}`}>
-            <button className={active ? "is-active" : undefined} type="button" aria-pressed={active} aria-controls="selected-topic" onClick={() => setSelectedId(topic.id)}>
+            <button className={active ? "is-active" : undefined} type="button" aria-pressed={active} aria-controls="selected-topic" onClick={() => setSelectedId((current) => current === topic.id ? null : topic.id)}>
               <span>{String(index + 1).padStart(2, "0")}</span><b>{topic.title}</b><span aria-hidden="true">{active ? "—" : "+"}</span>
             </button>
             <div className="topic-inline-detail" aria-hidden={!active}><p>{topic.description}</p><span className="topic-inline-scribble handwritten" aria-hidden="true">let’s unpack it!</span></div>
