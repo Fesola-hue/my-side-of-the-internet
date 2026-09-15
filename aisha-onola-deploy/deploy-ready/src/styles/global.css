@@ -424,7 +424,7 @@ main:focus { outline: none; }
   .hero-wash { background: rgba(58, 14, 31, 0.48); }
   .hero-copy { width: 100%; padding-bottom: 2.15rem; }
   .hero h1 { font-size: clamp(4rem, 21vw, 6rem); }
-  .hero h1 em { display: block; width: max-content; margin: -.35rem 0 0 auto; font-size: 1.75rem; }
+  .hero h1 em { display: inline-block; width: auto; margin: 0 0 0 .25rem; font-size: 1.75rem; vertical-align: baseline; }
   .hero-copy > p { width: 100%; max-width: 22rem; margin-top: .75rem; padding-right: .4rem; font-size: 1.28rem; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: .55rem; margin-top: 1rem; }
   .scroll-cue { right: auto; bottom: 3.25rem; left: 50%; transform: translateX(-50%); }
