@@ -16,6 +16,15 @@ export type Project = {
   mediaClass: string;
 };
 
+export type OffscriptSection = {
+  id: string;
+  label: string;
+  accent: "gold" | "blue" | "red" | "cream";
+  note?: string;
+};
+
+export type PersonalStatus = { label: string; value: string };
+
 export const navItems = [
   ["About", "#about"],
   ["Writing", "#writing"],
@@ -90,6 +99,22 @@ export const projects: Project[] = [
     roles: "Design · Build",
     mediaClass: "project-media-wide",
   },
+];
+
+export const offscriptSections: OffscriptSection[] = [
+  { id: "main-character", label: "Main Character", accent: "gold", note: "The person, place or idea at the centre." },
+  { id: "paper-trail", label: "The Paper Trail", accent: "red", note: "One stat worth knowing." },
+  { id: "soundtrack", label: "Soundtrack", accent: "blue", note: "Music that fits the mood." },
+  { id: "side-quests", label: "Side Quests", accent: "cream", note: "The context just outside the main story." },
+  { id: "word-market", label: "Word Market", accent: "gold", note: "A useful phrase, term or idea to keep." },
+  { id: "rabbit-hole", label: "Rabbit Hole", accent: "blue", note: "A lead for when one question becomes three." },
+  { id: "your-turn", label: "Your Turn", accent: "red", note: "A question to take with you." },
+];
+
+export const personalStatus: PersonalStatus[] = [
+  { label: "building", value: "The OffScript" },
+  { label: "writing", value: "Ideas I can’t leave alone" },
+  { label: "working", value: "Founder’s Associate" },
 ];
 
 export const experience = [

@@ -11,11 +11,12 @@ export function TopicExplorer() {
       <div className="topic-index" role="group" aria-label="Explore speaking topics">
         {speakingTopics.map((topic, index) => {
           const active = topic.id === selected.id;
-          return (
-            <button key={topic.id} className={active ? "is-active" : undefined} type="button" aria-pressed={active} aria-controls="selected-topic" onClick={() => setSelectedId(topic.id)}>
+          return <div key={topic.id} className={`topic-row${active ? " is-active" : ""}`}>
+            <button className={active ? "is-active" : undefined} type="button" aria-pressed={active} aria-controls="selected-topic" onClick={() => setSelectedId(topic.id)}>
               <span>{String(index + 1).padStart(2, "0")}</span><b>{topic.title}</b><span aria-hidden="true">{active ? "—" : "+"}</span>
             </button>
-          );
+            <div className="topic-inline-detail" aria-hidden={!active}><p>{topic.description}</p></div>
+          </div>;
         })}
       </div>
       <div id="selected-topic" className="topic-detail" key={selected.id} aria-live="polite">
