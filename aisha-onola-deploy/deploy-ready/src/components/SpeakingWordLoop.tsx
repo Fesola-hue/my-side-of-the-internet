@@ -7,11 +7,8 @@ export function SpeakingWordLoop() {
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let next = 0;
     const timer = window.setInterval(() => {
-      next += 1;
-      setIndex(next);
-      if (next === words.length - 1) window.clearInterval(timer);
+      setIndex((current) => (current + 1) % words.length);
     }, 1900);
     return () => window.clearInterval(timer);
   }, []);

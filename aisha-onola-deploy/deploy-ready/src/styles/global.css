@@ -560,7 +560,7 @@ main:focus { outline: none; }
 .offscript.section { padding-block: clamp(4.5rem,6vw,5rem); }
 .offscript-body { display: grid; grid-template-columns: minmax(16rem,.68fr) minmax(0,1.32fr); gap: clamp(2rem,4vw,4rem); align-items: stretch; margin-top: clamp(1.6rem,3vw,2.5rem); }
 .offscript-intro { display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
-.offscript-prompt { margin: 0 0 .5rem; color: var(--gold); font-size: 1.35rem; transform: rotate(-3deg); }
+.offscript-prompt { display: none; margin: 0 0 .5rem; color: var(--gold); font-size: 1.35rem; transform: rotate(-3deg); }
 .offscript-explorer { display: grid; grid-template-columns: minmax(12rem,.7fr) minmax(0,1.3fr); min-height: 23rem; border: 1px solid rgba(246,239,228,.38); }
 .offscript-layout > .offscript-explorer { display: none; }
 .offscript-index { border-right: 1px solid rgba(246,239,228,.38); }
@@ -672,6 +672,7 @@ main:focus { outline: none; }
   .offscript.section { padding-block: 3rem; }
   .offscript-prompt { margin-top: 1.2rem; text-align: right; }
   .offscript-layout > .issue-stack { display: none; }
+  .offscript-prompt { display: block; margin-top: 1.2rem; text-align: right; }
   .offscript-layout > .offscript-explorer { display: block; min-width: 0; margin-top: 1rem; border: 0; }
   .offscript-index { display: flex; gap: .8rem; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: .35rem 0 1rem; scrollbar-width: none; }
   .offscript-index::-webkit-scrollbar { display: none; }
