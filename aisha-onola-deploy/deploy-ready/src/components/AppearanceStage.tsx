@@ -2,38 +2,55 @@ import { useState } from "react";
 import { speakingAppearances } from "../data/speaking";
 
 export function AppearanceStage() {
-  const [selectedId, setSelectedId] = useState(speakingAppearances[0].id);
-  const selected = speakingAppearances.find((appearance) => appearance.id === selectedId) ?? speakingAppearances[0];
-  const selectedIndex = speakingAppearances.indexOf(selected);
+  const [showPast, setShowPast] = useState(false);
+  const now = new Date();
+  const upcomingAppearances = speakingAppearances.filter((appearance) => new Date(appearance.dateTime) >= now);
+  const pastAppearances = speakingAppearances.filter((appearance) => new Date(appearance.dateTime) < now);
+  const visibleAppearances = showPast ? pastAppearances : upcomingAppearances;
 
   return (
-    <div className="appearance-stage">
-      <div className="appearance-index" role="group" aria-label="Choose an upcoming appearance">
-        {speakingAppearances.map((appearance, index) => {
-          const active = appearance.id === selected.id;
-          return (
-            <button key={appearance.id} className={`appearance-option${active ? " is-active" : ""}`} type="button" aria-pressed={active} aria-controls="selected-appearance" onClick={() => setSelectedId(appearance.id)}>
-              <span className="appearance-option-no">{String(index + 1).padStart(2, "0")}</span>
-              <span><b>{appearance.organisation}</b>{appearance.programme && <small>{appearance.programme}</small>}</span>
-              <span className="appearance-option-arrow" aria-hidden="true">{active ? "→" : "↘"}</span>
-            </button>
-          );
-        })}
-      </div>
+    <div id="selected-appearance" className="appearance-calendar" aria-live="polite">
+      {visibleAppearances.length > 0 ? visibleAppearances.map((appearance) => {
+        const isPast = new Date(appearance.dateTime) < now;
+        return (
+          <article className={`appearance-card${isPast ? " is-past" : ""}`} key={appearance.id}>
+            <figure className="appearance-poster">
+              <img src="/SCA-Speaker-flyer.jpeg" alt="She Code Africa Lagos Community Growth Series flyer featuring Aisha Onola" width="864" height="1080" />
+              <figcaption>Community Growth Series</figcaption>
+            </figure>
+            <div className="appearance-card-content">
+              <div className="appearance-sheet-top"><span>{isPast ? "Past appearance" : "Next appearance"}</span><span>{appearance.type}</span></div>
+              <div className="appearance-card-brief">
+                <h3>{appearance.organisation}</h3>
+                <p className="appearance-card-date">{appearance.date}{appearance.location && ` · ${appearance.location}`}</p>
+              </div>
+              <details className="appearance-more">
+                <summary>More event details <span aria-hidden="true">+</span></summary>
+                <div className="appearance-sheet-body">
+                  {appearance.title && <p className="appearance-title">“{appearance.title}”</p>}
+                  <p className="appearance-description">{appearance.description}</p>
+                  <dl className="appearance-details">
+                    {appearance.date && <div><dt>Date</dt><dd>{appearance.date}</dd></div>}
+                    {appearance.time && <div><dt>Time</dt><dd>{appearance.time}</dd></div>}
+                    {appearance.location && <div><dt>Where</dt><dd>{appearance.location}</dd></div>}
+                  </dl>
+                </div>
+              </details>
+              <div className="appearance-sheet-bottom"><span className="status-dot" aria-hidden="true" /> <span>{isPast ? "completed" : "upcoming"}</span></div>
+            </div>
+          </article>
+        );
+      }) : (
+        <div className="appearance-empty">
+          <span className="appearance-empty-mark" aria-hidden="true">✳</span>
+          <p className="appearance-type">The calendar is quiet</p>
+          <h3>No upcoming appearances right now.</h3>
+          <p>Want to put something good on the calendar?</p>
+          <a className="button button-gold" href="#invite">Invite me to speak <span aria-hidden="true">→</span></a>
+        </div>
+      )}
 
-      <article id="selected-appearance" className={`appearance-sheet${selectedIndex === 1 ? " is-galaxy" : ""}`} key={selected.id} aria-live="polite">
-        <div className="appearance-sheet-top">
-          <span>Upcoming appearance</span><span>{String(selectedIndex + 1).padStart(2, "0")} / {String(speakingAppearances.length).padStart(2, "0")}</span>
-        </div>
-        <div className="appearance-sheet-body">
-          <p className="appearance-type">{selected.type}</p>
-          <h3>{selected.organisation}</h3>
-          {selected.programme && <p className="appearance-programme">{selected.programme}</p>}
-          {selected.title && <p className="appearance-title">“{selected.title}”</p>}
-          <p className="appearance-description">{selected.description}</p>
-        </div>
-        <div className="appearance-sheet-bottom"><span className="status-dot" aria-hidden="true" /> <span>{selected.status}</span><span className="handwritten">details soon</span></div>
-      </article>
+      {pastAppearances.length > 0 && <button className="appearance-toggle" type="button" onClick={() => setShowPast((current) => !current)}>{showPast ? "Back to upcoming" : `View past event${pastAppearances.length === 1 ? "" : "s"}`} <span aria-hidden="true">{showPast ? "↗" : "↓"}</span></button>}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 import { writingPieces } from "../data/content";
 
 export function WritingShelf() {
@@ -14,6 +14,7 @@ export function WritingShelf() {
           <a
             key={piece.key}
             className={`book ${piece.className}${activeKey === piece.key ? " is-active" : ""}`}
+            style={{ "--book-index": index } as CSSProperties}
             data-writing-key={piece.key}
             href={piece.href}
             target="_blank"

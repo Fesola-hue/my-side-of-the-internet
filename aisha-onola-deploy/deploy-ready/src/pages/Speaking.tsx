@@ -41,7 +41,7 @@ export function Speaking({ pageRef, onOpenContact }: SpeakingProps) {
           <div className="wrap">
             <div className="speaking-section-head">
               <p className="eyebrow"><span className="track-no">01</span> On the calendar</p>
-              <div><h2>Where I’m showing up next.</h2><p>Choose an appearance to take a closer look.</p></div>
+              <div><h2>A small calendar, kept current.</h2><p>Upcoming appearances, past conversations, and room for the next good invitation.</p></div>
             </div>
             <AppearanceStage />
           </div>

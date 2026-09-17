@@ -10,6 +10,8 @@ export type SpeakingAppearance = {
   type: "Community Session" | "Television Appearance" | "Panel" | "Workshop" | "Podcast" | "Media Appearance";
   location?: string;
   date?: string;
+  time?: string;
+  dateTime: string;
   status: AppearanceStatus;
   description: string;
   image?: { src: string; alt: string };
@@ -33,17 +35,12 @@ export const speakingAppearances: SpeakingAppearance[] = [
     organisation: "She Code Africa Lagos",
     title: "Building a Career in Tech When You Don’t Have It All Figured Out",
     type: "Community Session",
+    location: "Google Meet",
+    date: "26 September 2026",
+    time: "4:00 PM - 5:00 PM",
+    dateTime: "2026-09-26T16:00:00+01:00",
     status: "upcoming",
     description: "A conversation about trying different paths, building skills across disciplines, and creating a career while you’re still figuring out what you want yours to look like.",
-  },
-  {
-    id: "galaxy-television-womens-corner",
-    slug: "galaxy-television-womens-corner",
-    organisation: "Galaxy Television",
-    programme: "Women’s Corner",
-    type: "Television Appearance",
-    status: "upcoming",
-    description: "An upcoming appearance on Women’s Corner. The conversation is still taking shape, so I’ll share more when it’s confirmed.",
   },
 ];
 

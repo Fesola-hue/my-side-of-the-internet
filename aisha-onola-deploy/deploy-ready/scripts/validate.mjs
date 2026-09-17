@@ -67,15 +67,23 @@ for (const route of ["/", "/speaking"]) {
     const metrics = await page.evaluate((isHome) => ({
       scrollWidth: document.documentElement.scrollWidth,
       clientWidth: document.documentElement.clientWidth,
+      scrollHeight: document.documentElement.scrollHeight,
       heroLoaded: isHome ? Boolean(document.querySelector(".hero-image")?.complete && document.querySelector(".hero-image")?.naturalWidth > 0) : true,
       homeSections: document.querySelectorAll("main > section").length,
-      appearances: document.querySelectorAll(".appearance-option").length,
+      aboutOptions: document.querySelectorAll(".portrait-lenses button").length,
+      offscriptOptions: document.querySelectorAll(".offscript-index button").length,
+      projectOptions: document.querySelectorAll(".project-index button").length,
+      projectStages: document.querySelectorAll(".project-stage").length,
+      experienceOptions: document.querySelectorAll(".experience-index button").length,
+      appearances: document.querySelectorAll(".appearance-card, .appearance-empty").length,
       topics: document.querySelectorAll(".topic-index button").length,
     }), route === "/");
     const record = { ...metrics, overflow: metrics.scrollWidth > metrics.clientWidth, consoleErrors };
     const target = route === "/" ? results.home.viewports : results.speaking.viewports;
     target[viewport.name] = record;
-    const structuralFailure = route === "/" ? !metrics.heroLoaded || metrics.homeSections !== 6 : metrics.appearances !== 2 || metrics.topics !== 5;
+    const structuralFailure = route === "/"
+      ? !metrics.heroLoaded || metrics.homeSections !== 6 || metrics.aboutOptions !== 3 || metrics.offscriptOptions !== 7 || metrics.projectOptions !== 4 || metrics.projectStages !== 1 || metrics.experienceOptions !== 3
+      : metrics.appearances !== 1 || metrics.topics !== 5;
     if (record.overflow || structuralFailure || consoleErrors.length) errors.push(`${route} ${viewport.name} failed: ${JSON.stringify(record)}`);
     await page.close();
   }
@@ -94,6 +102,29 @@ for (const route of ["/", "/speaking"]) {
   results.home.interactions.speakingLinks = { speakingNav, speakingPathway };
   if (!mouseTitle || mouseTarget !== "_blank") errors.push("Desktop bookshelf hover/link behavior failed");
   if (speakingNav !== "/speaking" || speakingPathway !== "/speaking") errors.push("Homepage Speaking navigation links failed");
+
+  await page.locator(".portrait-lenses button").nth(1).click();
+  const aboutSelected = await page.locator(".portrait-lenses button").nth(1).getAttribute("aria-pressed") === "true";
+  const aboutCaption = await page.locator("#about-portrait-note figcaption").textContent();
+  await page.locator(".offscript-index button").nth(2).click();
+  const offscriptSelected = await page.locator(".offscript-index button").nth(2).getAttribute("aria-pressed") === "true";
+  const offscriptHeading = await page.locator("#offscript-preview h3").textContent();
+  const offscriptHref = await page.getByRole("link", { name: "Read The OffScript" }).getAttribute("href");
+  const projectHeadings = [];
+  for (let index = 0; index < 4; index += 1) {
+    await page.locator(".project-index button").nth(index).click();
+    projectHeadings.push((await page.locator("#active-project h3").textContent())?.trim());
+  }
+  const experienceHeadings = [];
+  for (let index = 0; index < 3; index += 1) {
+    await page.locator(".experience-index button").nth(index).click();
+    experienceHeadings.push((await page.locator("#active-experience h3").textContent())?.trim());
+  }
+  results.home.interactions.explorers = { aboutSelected, aboutCaption, offscriptSelected, offscriptHeading, offscriptHref, projectHeadings, experienceHeadings };
+  if (!aboutSelected || aboutCaption?.trim() !== "making useful things") errors.push("About selector failed");
+  if (!offscriptSelected || offscriptHeading?.trim() !== "Soundtrack" || offscriptHref !== "https://theoffscript.page") errors.push("OffScript selector/pathway failed");
+  if (JSON.stringify(projectHeadings) !== JSON.stringify(["STILLcam", "The OffScript Check", "Aisha's Writing Space", "aishaonola.me"])) errors.push("Project selector failed");
+  if (JSON.stringify(experienceHeadings) !== JSON.stringify(["Founder's Associate", "Outsourcing Intern", "Class Teacher"])) errors.push("Experience selector failed");
 
   const trigger = page.locator(".hero-contact-trigger");
   await trigger.click();
@@ -131,13 +162,28 @@ for (const route of ["/", "/speaking"]) {
   const anotherSelected = await page.locator(".book-two").evaluate((element) => element.classList.contains("is-active"));
   results.home.interactions.touchBookshelf = { firstTapSelected, firstTapDidNotOpen, secondTapUrl, anotherSelected };
   if (!firstTapSelected || !firstTapDidNotOpen || !secondTapUrl.includes("people-who-made-my-world") || !anotherSelected) errors.push("Touch bookshelf behavior failed");
+  await page.locator(".portrait-lenses button").nth(2).tap();
+  const touchAbout = await page.locator(".portrait-lenses button").nth(2).getAttribute("aria-pressed") === "true";
+  await page.locator(".offscript-index button").nth(6).tap();
+  const touchOffscript = await page.locator("#offscript-preview h3").textContent();
+  await page.locator(".project-index button").nth(2).tap();
+  const touchProject = await page.locator("#active-project h3").textContent();
+  await page.locator(".experience-index button").nth(1).tap();
+  const touchExperience = await page.locator("#active-experience h3").textContent();
+  const oneSharedProjectStage = await page.locator(".project-stage").count() === 1;
+  results.home.interactions.touchExplorers = { touchAbout, touchOffscript, touchProject, touchExperience, oneSharedProjectStage };
+  if (!touchAbout || touchOffscript?.trim() !== "Your Turn" || touchProject?.trim() !== "Aisha's Writing Space" || touchExperience?.trim() !== "Outsourcing Intern" || !oneSharedProjectStage) errors.push("Touch homepage explorers failed");
   await page.locator(".nav-toggle").tap();
   const navOpen = await page.locator("#nav-links").evaluate((element) => element.classList.contains("is-open"));
+  await page.keyboard.press("Escape");
+  const navClosed = !(await page.locator("#nav-links").evaluate((element) => element.classList.contains("is-open")));
+  const navFocusReturned = await page.locator(".nav-toggle").evaluate((element) => element === document.activeElement);
+  await page.locator(".nav-toggle").tap();
   await page.getByRole("link", { name: "Speaking", exact: true }).tap();
   await page.waitForURL("**/speaking");
   const navReachedSpeaking = page.url().endsWith("/speaking");
-  results.home.interactions.mobileNavigation = { navOpen, navReachedSpeaking };
-  if (!navOpen || !navReachedSpeaking) errors.push("Mobile navigation to Speaking failed");
+  results.home.interactions.mobileNavigation = { navOpen, navClosed, navFocusReturned, navReachedSpeaking };
+  if (!navOpen || !navClosed || !navFocusReturned || !navReachedSpeaking) errors.push("Mobile navigation behavior failed");
   await context.close();
 }
 
@@ -145,16 +191,12 @@ for (const route of ["/", "/speaking"]) {
   const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: "reduce" });
   await stubExternalFonts(page);
   await page.goto(`${appUrl}/speaking`, { waitUntil: "networkidle" });
-  await page.locator(".appearance-option").nth(1).click();
-  const galaxySelected = await page.locator(".appearance-option").nth(1).getAttribute("aria-pressed") === "true";
-  const galaxyHeading = await page.locator("#selected-appearance h3").textContent();
-  const galaxyProgramme = await page.locator("#selected-appearance .appearance-programme").textContent();
-  const inventedTitleAbsent = await page.locator("#selected-appearance .appearance-title").count() === 0;
-  await page.locator(".appearance-option").first().focus();
-  await page.keyboard.press("Enter");
-  const keyboardSelected = await page.locator(".appearance-option").first().getAttribute("aria-pressed") === "true";
-  results.speaking.interactions.appearancesDesktop = { galaxySelected, galaxyHeading, galaxyProgramme, inventedTitleAbsent, keyboardSelected };
-  if (!galaxySelected || galaxyHeading?.trim() !== "Galaxy Television" || galaxyProgramme?.trim() !== "Women’s Corner" || !inventedTitleAbsent || !keyboardSelected) errors.push("Desktop/keyboard appearance selector failed");
+  const appearanceCount = await page.locator(".appearance-card, .appearance-empty").count();
+  const appearanceHeading = await page.locator("#selected-appearance h3").textContent();
+  const flyerLoaded = await page.locator(".appearance-poster img").evaluate((image) => image.complete && image.naturalWidth > 0);
+  const eventDetails = await page.locator(".appearance-details").textContent();
+  results.speaking.interactions.appearancesDesktop = { appearanceCount, appearanceHeading, flyerLoaded, eventDetails };
+  if (appearanceCount !== 1 || appearanceHeading?.trim() !== "She Code Africa Lagos" || !flyerLoaded || !eventDetails?.includes("26 September 2026")) errors.push("Speaking appearance feature failed");
 
   await page.locator(".topic-index button").nth(4).click();
   const topicSelected = await page.locator(".topic-index button").nth(4).getAttribute("aria-pressed") === "true";
@@ -222,7 +264,7 @@ for (const route of ["/", "/speaking"]) {
 }
 
 {
-  const assetPaths = ["/aisha-onola.jpg", "/aisha-onola.jpeg", "/Aisha-Onola-CV.pdf", "/og-image.png", "/favicon.ico", "/favicon.svg", "/apple-touch-icon.png", "/robots.txt", "/sitemap.xml", "/assets/screenshots/stillcam-desktop.png", "/assets/screenshots/check-desktop.png", "/assets/screenshots/writing-desktop.png"];
+  const assetPaths = ["/aisha-onola.jpg", "/aisha-onola.jpeg", "/Aisha_Fesola_Onola_Resume.pdf", "/SCA-Speaker-flyer.jpeg", "/og-image.png", "/favicon.ico", "/favicon.svg", "/apple-touch-icon.png", "/robots.txt", "/sitemap.xml", "/assets/screenshots/stillcam-desktop.png", "/assets/screenshots/check-desktop.png", "/assets/screenshots/writing-desktop.png"];
   const context = await browser.newContext();
   for (const path of assetPaths) {
     const response = await context.request.get(`${appUrl}${path}`);

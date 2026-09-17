@@ -103,7 +103,7 @@ export function Home({ pageRef, onOpenContact }: HomeProps) {
               {experience.map((item) => <li key={item.role}><time dateTime={item.dateTime}>{item.date}</time><div><h3>{item.role}</h3><p className="org">{item.org}</p><p>{item.detail}</p></div></li>)}
             </ol>
             <div className="button-row work-buttons">
-              <a className="button button-gold" href="/Aisha-Onola-CV.pdf" target="_blank" rel="noopener">View my CV ↗</a>
+              <a className="button button-gold" href="/Aisha_Fesola_Onola_Resume.pdf" target="_blank" rel="noopener">View my CV ↗</a>
               <a className="button button-ghost" href="https://www.linkedin.com/in/aishaonola" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
             </div>
             <div className="work-contact"><span className="handwritten" aria-hidden="true">your turn.</span><button className="button button-gold contact-trigger" type="button" onClick={(event) => onOpenContact(event.currentTarget)}>Have something in mind? <span aria-hidden="true">↗</span></button></div>
