@@ -81,7 +81,7 @@ export function Home({ pageRef, onOpenContact }: HomeProps) {
             </div>
             <div className="project-rail">
               {projects.map((project, index) => (
-                <article className={`project${index === 0 ? " project-stillcam" : index === 1 ? " project-check" : index === 2 ? " project-writing-space" : ""}`} key={project.name}>
+                <article className="project" key={project.name}>
                   <div className={`project-media ${project.mediaClass}`}>
                     {project.image ? <img {...project.image} loading="lazy" /> : <div className="you-are-here-wrap"><span className="you-are-here-domain">aishaonola.me</span><span className="you-are-here-dot">●</span><span className="you-are-here-label">you are here :)</span></div>}
                   </div>

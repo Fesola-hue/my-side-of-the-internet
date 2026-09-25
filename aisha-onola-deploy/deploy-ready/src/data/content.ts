@@ -67,17 +67,17 @@ export const writingPieces: WritingPiece[] = [
 
 export const projects: Project[] = [
   {
-    name: "STILLcam",
-    description: "Turn a few photos into little memory objects.",
+    name: "Little Ledger",
+    description: "My income changes. My expenses do whatever they like. I built Little Ledger so I could still make a plan without pretending either one is predictable. Put in what came in, decide where it goes, and check in when you remember.",
     roles: "Concept · Product · Design · Build",
-    href: "https://stillcam.vercel.app",
-    linkLabel: "Make a memory ↗",
-    image: { src: "/assets/screenshots/stillcam-desktop.png", width: 1440, height: 1100, alt: "Full desktop viewport of STILLcam" },
+    href: "https://littleledgr.vercel.app",
+    linkLabel: "Open the ledger ↗",
+    image: { src: "/assets/screenshots/little-ledger-desktop.png", width: 1440, height: 900, alt: "Little Ledger budget planner showing a monthly income field and a four-part spending split" },
     mediaClass: "project-media-landscape",
   },
   {
     name: "The OffScript Check",
-    description: "A two-minute interactive check of what you actually know about the news.",
+    description: "I kept wondering how much news we actually understand beyond recognising a headline. So I made a two-minute check to find out. It’s a little test for your brain and a way into the stories behind the answers.",
     roles: "Concept · Editorial · Product · Build",
     href: "https://check.theoffscript.page",
     linkLabel: "Take the Check ↗",
@@ -85,8 +85,17 @@ export const projects: Project[] = [
     mediaClass: "project-media-tall",
   },
   {
+    name: "STILLcam",
+    description: "I kept seeing digital photo frames and wondering where everyone got them. Eventually, I got tired of wondering and made one that lives in a browser. Add your photos, let them rotate, and keep a few good moments in view.",
+    roles: "Concept · Product · Design · Build",
+    href: "https://stillcam.vercel.app",
+    linkLabel: "Make a memory ↗",
+    image: { src: "/assets/screenshots/stillcam-desktop.png", width: 1440, height: 1100, alt: "Full desktop viewport of STILLcam" },
+    mediaClass: "project-media-landscape",
+  },
+  {
     name: "Aisha's Writing Space",
-    description: "A home for the things I write, from personal essays to reported stories.",
+    description: "Some things need more room than a caption or a link in bio. I made a separate home for my essays and OffScript stories, where you can wander between things I’ve lived and things I couldn’t stop thinking about.",
     roles: "Creative direction · Editorial · Design · Build",
     href: "https://read.aishaonola.me/",
     linkLabel: "Enter ↗",

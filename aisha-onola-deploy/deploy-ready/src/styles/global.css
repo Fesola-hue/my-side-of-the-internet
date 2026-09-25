@@ -166,9 +166,9 @@ blockquote { margin: 2rem 0 0; border-left: 3px solid var(--gold); padding: .2re
 .built-head h2 { margin-bottom: 0; text-transform: uppercase; }
 .built-head > p:last-child { margin: 0; color: #6b554b; max-width: 28rem; }
 /* horizontal scroll carousel */
-.project-rail { display: flex; gap: clamp(1rem, 2.5vw, 1.5rem); overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 1rem; scrollbar-width: none; }
+.project-rail { display: flex; gap: clamp(1rem, 2.5vw, 1.5rem); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 1rem; scrollbar-width: none; }
 .project-rail::-webkit-scrollbar { display: none; }
-.project { flex: 0 0 clamp(17rem, 38vw, 26rem); scroll-snap-align: start; min-width: 0; }
+.project { flex: 0 0 clamp(20rem, 42vw, 28rem); scroll-snap-align: start; min-width: 0; }
 .project-media { position: relative; display: grid; overflow: hidden; border: 1px solid rgba(58,14,31,.28); background: #f7f2e9; box-shadow: 0 8px 20px rgba(58,14,31,.12); place-items: center; aspect-ratio: 16 / 10; }
 .project-media-landscape { padding: clamp(.4rem, 1vw, .65rem); transform: rotate(-.45deg); }
 .project-media-tall { padding: clamp(.4rem, 1vw, .65rem); background: #f8f4eb; transform: rotate(.4deg); }
@@ -178,7 +178,7 @@ blockquote { margin: 2rem 0 0; border-left: 3px solid var(--gold); padding: .2re
 .project-copy { margin-top: .85rem; padding-inline: .1rem; }
 .project-copy h3 { display: inline; margin: 0; color: var(--wine-deep); font-size: clamp(1.3rem, 2.5vw, 1.9rem); letter-spacing: -.03em; }
 .project-no { margin-right: .55rem; font-family: "JetBrains Mono", monospace; color: var(--wine-light); font-size: .65rem; }
-.project-copy p { max-width: 26rem; margin: .45rem 0 .15rem; line-height: 1.45; font-size: .95rem; }
+.project-copy p { max-width: 28rem; margin: .55rem 0 .25rem; line-height: 1.52; font-size: 1rem; }
 .project-copy small { display: block; color: #6b554b; font-family: "JetBrains Mono", monospace; font-size: .62rem; line-height: 1.5; }
 .project-media-writing p { margin: .55rem 0 .65rem; color: var(--wine-deep); font-family: "Instrument Serif", serif; font-size: clamp(1.2rem, 2vw, 1.65rem); line-height: 1.04; }
 .project-media-writing .handwritten { display: inline-block; color: var(--red); font-size: 1rem; transform: rotate(-3deg); }
@@ -450,7 +450,7 @@ main:focus { outline: none; }
   .offscript-layout { gap: 2rem; }
   .issue-stack { width: 87%; height: 20rem; }
   .issue-front b { font-size: 4rem; }
-  .project { flex: 0 0 clamp(15rem, 72vw, 22rem); }
+  .project { flex: 0 0 min(86vw, 23rem); }
   .project-copy { margin-top: .85rem; }
   .credits li { grid-template-columns: 1fr; gap: 1rem; }
   .button-row .button { width: 100%; }
